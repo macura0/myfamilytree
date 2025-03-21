@@ -23,7 +23,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold leading-6 text-gray-900">开源信息</h3>
             <p className="text-sm leading-6 text-gray-600">
-              本项目是开源的家族谱系软件，欢迎在GitHub上查看。
+              本项目是开源的家族谱系软件，欢迎在GitHub0上查看。
             </p>
             <p className="text-sm leading-6 text-gray-600">
               <Link 
