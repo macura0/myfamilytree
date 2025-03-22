@@ -1,15 +1,8 @@
-import { NextConfig } from 'next';
-import { Configuration } from 'webpack'; // 引入Webpack配置类型
+import type { NextConfig } from "next";
 
-/** @type {NextConfig} */ 
-const nextConfig = { 
-  webpack: (config: Configuration) => { // 显式标注config类型
-    config.resolve.fallback = { 
-      ...config.resolve.fallback, 
-      fs: false, 
-    }; 
-    return config; 
-  }, 
-}; 
+const nextConfig: NextConfig = {
+  /* config options here */
+  fs: false,
+};
 
 export default nextConfig;
