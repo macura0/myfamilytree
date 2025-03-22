@@ -87,7 +87,7 @@ export function getFamilyFullName(): string {
 export async function getFamilyDataOnServer(): Promise<FamilyData> {
   if (familyDataCache) return familyDataCache;
   
-  const data = await loadConfigOnServer<FamilyData>('family-data.json', defaultFamilyData);
+  const data = await loadConfigOnServer<FamilyData>('../types/family-data.json', defaultFamilyData);
   familyDataCache = data;
   return data;
 }
