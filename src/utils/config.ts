@@ -33,8 +33,8 @@ async function loadConfigOnServer<T>(filename: string, defaultConfig: T): Promis
 
   try {
     // 动态导入fs和path模块(仅在服务器端)
-    const fs = await import('fs').then(m => m.fs);
-    const path = await import('path').then(m => m.path);;
+    const fs = await import('fs');
+    const path = await import('path');
     
     const configDir = path.default.join(process.cwd(), 'config');
     const filePath = path.default.join(configDir, filename);
