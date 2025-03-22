@@ -1,15 +1,15 @@
-import { NextConfig } from 'next'; // 引入NextConfig类型定义[1](@ref)
+import { NextConfig } from 'next';
+import { Configuration } from 'webpack'; // 引入Webpack配置类型
 
-/** @type {NextConfig} */ // 通过JSDoc标注类型[1](@ref)
-const nextConfig = {
-  webpack: (config) => {
-    // 排除Node.js核心模块fs[3](@ref)
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    };
-    return config;
-  },
-};
+/** @type {NextConfig} */ 
+const nextConfig = { 
+  webpack: (config: Configuration) => { // 显式标注config类型
+    config.resolve.fallback = { 
+      ...config.resolve.fallback, 
+      fs: false, 
+    }; 
+    return config; 
+  }, 
+}; 
 
 export default nextConfig;
