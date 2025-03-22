@@ -1,7 +1,6 @@
 import { FamilyData } from '../types/family';
-// 动态导入fs和path模块(仅在服务器端)
-import fs from "fs";
-import path from "path";
+
+
 // 定义配置类型
 export interface AuthConfig {
   requireAuth: boolean;
@@ -34,7 +33,9 @@ async function loadConfigOnServer<T>(filename: string, defaultConfig: T): Promis
   }
 
   try {
-    
+    // 动态导入fs和path模块(仅在服务器端)
+    const fs = await import('fs');
+    const path = await import('path');
     
     const configDir = path.default.join(process.cwd(), 'config');
     const filePath = path.default.join(configDir, filename);
