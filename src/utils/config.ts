@@ -1,6 +1,5 @@
 import { FamilyData } from '../types/family';
 
-
 // 定义配置类型
 export interface AuthConfig {
   requireAuth: boolean;
@@ -27,16 +26,16 @@ let familyDataCache: FamilyData | null = null;
 // 在服务器端加载配置文件
 async function loadConfigOnServer<T>(filename: string, defaultConfig: T): Promise<T> {
   // 检查是否在服务器端
-  if (typeof window === 'undefined') {
-    // 动态导入fs和path模块(仅在服务器端)
-    const fs = await import('fs');
-    const path = await import('path');
-  } else {
-    console.warn(`Cannot load fs in browser environment, using default config`);
+  if (typeof window !== 'undefined') {
+    console.warn(`Cannot load ${filename} in browser environment, using default config`);
     return defaultConfig;
   }
 
   try {
+    // 动态导入fs和path模块(仅在服务器端)
+    const fs = await import('fs');
+    const path = await import('path');
+    
     const configDir = path.default.join(process.cwd(), 'config');
     const filePath = path.default.join(configDir, filename);
     
@@ -101,4 +100,4 @@ export function getPublicConfig(): PublicConfig {
 // 对于familyData，我们需要通过API获取，因为这个数据量可能很大
 export function getFamilyData(): FamilyData {
   return defaultFamilyData; // 这只是一个默认值，实际数据将通过API加载
-}
+} 
